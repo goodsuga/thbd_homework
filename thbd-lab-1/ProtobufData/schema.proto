@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package my_serializer_test;
+
+
+message ListOfStrings{
+    repeated string strings = 1;
+}
+
+// List<
+//    Dict<string, List<
+//                      List<int>>
+//          >>
+
+message RepeatedInt{
+    repeated int32 ints = 1;
+}
+
+message ListOfRepeatedInts {
+    repeated RepeatedInt lists = 1;
+}
+
+message StringToListOfRepeatedInts {
+    map<string, ListOfRepeatedInts> mapping = 1;
+}
+
+message ListOfSTLRI {
+    repeated StringToListOfRepeatedInts repeated_stlris = 1;
+}
+
+
+message CustomerBasket {
+    repeated string items = 1;
+    repeated int32 quantities = 2;
+    repeated float prices = 3;
+    map<string, ListOfStrings> combos = 4;
+}
+
+message UserClass{
+    string name = 1;
+    string surname = 2;
+    int32 age = 3;
+    float current_balance = 4;
+    CustomerBasket basket = 5;
+    map<string, bool> loyalty_programmes = 6;
+    ListOfSTLRI very_complicated_list_of_dicts_of_lists = 7;
+}
+
+// self.name = ""
+// self.surname = ""
+// self.age = 0
+// self.current_balance: 0.0
+// self.basket = CustomerBasket()
+// self.loyalty_programmes = {
+//     "BestCustomer": False,
+//     "MarchDiscountProgramme": True
+// }
+// self.very_complicated_list_of_dicts_of_lists = []
+
+// self.items = []
+// self.quantities: []
+// self.prices: []
+// self.combos = {}

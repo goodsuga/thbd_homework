@@ -1,0 +1,43 @@
+type: class
+classname: "UserClass"
+value_type:
+  name: string
+  surname: string
+  age: int
+  current_balance: float
+  basket:
+    type: class
+    classname: "CustomerBasket"
+    value_type:
+      items:
+        type: list
+        value_type: string
+      quantities:
+        type: list
+        value_type: int
+      prices:
+        type: list
+        value_type: float
+      combos:
+        type: dict
+        value_type:
+          keys: string
+          values:
+            type: list
+            value_type: string
+  loyalty_programmes:
+    type: dict
+    value_type:
+      keys: string
+      values: bool
+  very_complicated_list_of_dicts_of_lists:
+    type: list
+    value_type:
+      type: dict
+      value_type:
+        keys: string
+        values:
+          type: list
+          value_type:
+            type: list
+            value_type: int
